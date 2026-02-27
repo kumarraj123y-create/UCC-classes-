@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UTSE 2026 Result</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial; text-align:center; background:#f2f2f2; }
+.header { background:#0b2c5f; color:white; padding:20px; }
+.container { padding:20px; }
+input {
+width:90%;
+padding:12px;
+margin:10px 0;
+}
+button {
+padding:12px 20px;
+background:#0b2c5f;
+color:white;
+border:none;
+border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>UTSE 2026 Result</h2>
+</div>
+
+<div class="container">
+
+<h3>Enter Your Registration Email</h3>
+
+<input type="text" id="email" placeholder="Enter Email">
+
+<br>
+
+<button onclick="checkResult()">Check Result</button>
+
+<p id="output"></p>
+
+<br>
+<button onclick="window.location.href='index.html'">
+Back to Home
+</button>
+
+</div>
+
+<script>
+function checkResult() {
+var email = document.getElementById("email").value;
+
+if(email == "demo@gmail.com"){
+document.getElementById("output").innerHTML = "Congratulations! You Passed 🎉";
+} else {
+document.getElementById("output").innerHTML = "Result Not Found";
+}
+}
+</script>
+
+</body>
+</html>
