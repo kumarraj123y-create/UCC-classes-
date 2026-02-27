@@ -1,79 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>UCC - UTSE 2026</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body { font-family: Arial; background:#f2f2f2; margin:0; }
-.header { background:#0b2c5f; color:white; text-align:center; padding:20px; }
-.box { background:white; margin:20px; padding:20px; border-radius:10px; }
-input { width:100%; padding:10px; margin:10px 0; }
-button { width:100%; padding:10px; background:red; color:white; border:none; }
-</style>
+  <title>UTSE 2026</title>
 </head>
-
 <body>
 
-<div class="header">
-<h2>UNIQUE COACHING CLASSES</h2>
-<p>UTSE 2026 - Unique Test Scholarship Exam</p>
-</div>
-
-<div class="box">
-<h3>Student Registration</h3>
-<input type="text" id="regName" placeholder="Full Name">
-<input type="email" id="regEmail" placeholder="Email">
-<input type="password" id="regPass" placeholder="Password">
+<h2>Student Registration</h2>
+<input type="email" id="regEmail" placeholder="Email"><br><br>
+<input type="password" id="regPassword" placeholder="Password"><br><br>
 <button onclick="register()">Register</button>
-</div>
 
-<div class="box">
-<h3>Student Login</h3>
-<input type="email" id="loginEmail" placeholder="Email">
-<input type="password" id="loginPass" placeholder="Password">
+<h2>Student Login</h2>
+<input type="email" id="loginEmail" placeholder="Email"><br><br>
+<input type="password" id="loginPassword" placeholder="Password"><br><br>
 <button onclick="login()">Login</button>
-</div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBHoJRzIjP5-5aiYgvLZANq3HdvYUcUvtI",
-  authDomain: "ucc-utse-2026.firebaseapp.com",
-  projectId: "ucc-utse-2026",
-  storageBucket: "ucc-utse-2026.firebasestorage.app",
-  messagingSenderId: "389582153240",
-  appId: "1:389582153240:web:80212a6e2567a0f452456d"
-};
+  const firebaseConfig = {
+    apiKey: "PASTE_YOUR_API_KEY_HERE",
+    authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
+    projectId: "PASTE_YOUR_PROJECT_ID_HERE",
+    storageBucket: "PASTE_YOUR_STORAGE_BUCKET_HERE",
+    messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
+    appId: "PASTE_YOUR_APP_ID_HERE"
+  };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-window.register = async function() {
-  const name = document.getElementById("regName").value;
-  const email = document.getElementById("regEmail").value;
-  const pass = document.getElementById("regPass").value;
+  window.register = function() {
+    const email = document.getElementById("regEmail").value;
+    const password = document.getElementById("regPassword").value;
 
-  const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-  await setDoc(doc(db, "students", userCredential.user.uid), {
-    name: name,
-    email: email
-  });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Registration Successful ✅"))
+      .catch((error) => alert(error.message));
+  }
 
-  alert("Registration Successful!");
-}
+  window.login = function() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
 
-window.login = async function() {
-  const email = document.getElementById("loginEmail").value;
-  const pass = document.getElementById("loginPass").value;
-
-  await signInWithEmailAndPassword(auth, email, pass);
-  alert("Login Successful!");
-}
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Login Successful ✅"))
+      .catch((error) => alert(error.message));
+  }
 </script>
 
 </body>
