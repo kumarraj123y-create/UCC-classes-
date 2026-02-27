@@ -1,21 +1,56 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UTSE 2026</title>
+</head>
+<body>
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyA3gE9xLZJUikt0LxyTXP_LVLJbQEYuR0I",
-  authDomain: "ucc-utse-2026.firebaseapp.com",
-  projectId: "ucc-utse-2026",
-  storageBucket: "ucc-utse-2026.firebasestorage.app",
-  messagingSenderId: "389582153240",
-  appId: "1:389582153240:web:17e684e372c2031b52456d",
-  measurementId: "G-TK5DWGF2Q1"
-};
+<h2>Student Registration</h2>
+<input type="email" id="regEmail" placeholder="Email"><br><br>
+<input type="password" id="regPass" placeholder="Password"><br><br>
+<button onclick="register()">Register</button>
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+<h2>Student Login</h2>
+<input type="email" id="loginEmail" placeholder="Email"><br><br>
+<input type="password" id="loginPass" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA3Eg9XlZJuiKtOLxyTxP_LVLJbQEYUR0I",
+    authDomain: "ucc-utse-2026.firebaseapp.com",
+    projectId: "ucc-utse-2026",
+    storageBucket: "ucc-utse-2026.firebasestorage.app",
+    messagingSenderId: "389585213240",
+    appId: "1:389585213240:web:176a84c372c2031b52456d",
+    measurementId: "G-TK5DWGF2Q1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.register = function() {
+    const email = document.getElementById("regEmail").value;
+    const pass = document.getElementById("regPass").value;
+
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then(() => alert("Registration Successful ✅"))
+      .catch(error => alert(error.message));
+  }
+
+  window.login = function() {
+    const email = document.getElementById("loginEmail").value;
+    const pass = document.getElementById("loginPass").value;
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => alert("Login Successful ✅"))
+      .catch(error => alert(error.message));
+  }
+</script>
+
+</body>
+</html>
