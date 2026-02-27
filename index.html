@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UTSE 2026</title>
+<title>UTSE 2026 - Unique Test Scholarship Exam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial; margin:0; background:#f2f2f2; }
+.header { background:#0b2c5f; color:white; text-align:center; padding:20px; }
+.container { padding:20px; }
+button {
+width:100%;
+padding:15px;
+margin:10px 0;
+font-size:16px;
+background:#0b2c5f;
+color:white;
+border:none;
+border-radius:5px;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Student Registration</h2>
-<input type="email" id="regEmail" placeholder="Email"><br><br>
-<input type="password" id="regPass" placeholder="Password"><br><br>
-<button onclick="register()">Register</button>
+<div class="header">
+<h2>UNIQUE COACHING CLASSES</h2>
+<p>UTSE 2026 - Unique Test Scholarship Exam</p>
+</div>
 
-<h2>Student Login</h2>
-<input type="email" id="loginEmail" placeholder="Email"><br><br>
-<input type="password" id="loginPass" placeholder="Password"><br><br>
-<button onclick="login()">Login</button>
+<div class="container">
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+<button onclick="window.location.href='https://tally.so/r/NpA0VG'">
+Registration
+</button>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA3Eg9XlZJuiKtOLxyTxP_LVLJbQEYUR0I",
-    authDomain: "ucc-utse-2026.firebaseapp.com",
-    projectId: "ucc-utse-2026",
-    storageBucket: "ucc-utse-2026.firebasestorage.app",
-    messagingSenderId: "389585213240",
-    appId: "1:389585213240:web:176a84c372c2031b52456d",
-    measurementId: "G-TK5DWGF2Q1"
-  };
+<button onclick="window.location.href='payment.html'">
+Payment
+</button>
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+<button onclick="window.location.href='https://forms.google.com'">
+Online Test
+</button>
 
-  window.register = function() {
-    const email = document.getElementById("regEmail").value;
-    const pass = document.getElementById("regPass").value;
+<button onclick="window.location.href='result.html'">
+Result
+</button>
 
-    createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => alert("Registration Successful ✅"))
-      .catch(error => alert(error.message));
-  }
+<button onclick="window.location.href='admit.html'">
+Admit Card
+</button>
 
-  window.login = function() {
-    const email = document.getElementById("loginEmail").value;
-    const pass = document.getElementById("loginPass").value;
-
-    signInWithEmailAndPassword(auth, email, pass)
-      .then(() => alert("Login Successful ✅"))
-      .catch(error => alert(error.message));
-  }
-</script>
+</div>
 
 </body>
 </html>
